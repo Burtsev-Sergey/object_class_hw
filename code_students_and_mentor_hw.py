@@ -120,7 +120,7 @@ some_mentor.courses_attached += ['Python']
 
 # Создание второго экземляра класса Mentor.  
 some_mentor1 = Mentor('Mark', 'Grizzly')
-some_mentor1.courses_attached += ['Git']
+some_mentor1.courses_attached += ['Python']
 
 # Создание первого экземляра дочернего класса Lecturer.  
 some_lecturer = Lecturer('Some', 'Buddy')
@@ -128,7 +128,7 @@ some_lecturer.courses_attached += ['Python']
 
 # Создание второго экземляра дочернего класса Lecturer.  
 some_lecturer1 = Lecturer('Mark', 'Grizzly')
-some_lecturer1.courses_attached += ['Git']
+some_lecturer1.courses_attached += ['Python']
 
 # Вызов метода rate_lecturers для первого экземпляра в дочернем классе Lecturer.  
 some_student.rate_lecturers(some_lecturer, 'Python', 10)
@@ -136,9 +136,9 @@ some_student.rate_lecturers(some_lecturer, 'Python', 10)
 some_student.rate_lecturers(some_lecturer, 'Python', 10)
 
 # Вызов метода rate_lecturers для второго экземпляра в дочернем классе Lecturer.  
-some_student1.rate_lecturers(some_lecturer1, 'Git', 9)
-some_student1.rate_lecturers(some_lecturer1, 'Git', 9)
-some_student1.rate_lecturers(some_lecturer1, 'Git', 9)
+some_student1.rate_lecturers(some_lecturer1, 'Python', 9)
+some_student1.rate_lecturers(some_lecturer1, 'Python', 9)
+some_student1.rate_lecturers(some_lecturer1, 'Python', 9)
 
 # Создание первого экземляра дочернего класса Reviewer.  
 some_reviewer = Reviewer('Some', 'Buddy')
@@ -146,9 +146,9 @@ some_reviewer.courses_attached += ['Python']
 
 # Создание второго экземляра дочернего класса Reviewer.  
 some_reviewer1 = Reviewer('Petr', 'Sidorof')
-some_reviewer1.courses_attached += ['Git']
+some_reviewer1.courses_attached += ['Python']
 
-# Вызов метода rate_hw для первого экземпляра в классе Setudnt.  
+# Вызов метода rate_hw для первого экземпляра в классе Student.  
 some_reviewer.rate_hw(some_student, 'Python', 10)
 some_reviewer.rate_hw(some_student, 'Python', 10)
 some_reviewer.rate_hw(some_student, 'Python', 9)
@@ -157,10 +157,10 @@ some_reviewer.rate_hw(some_student, 'Python', 10)
 some_reviewer.rate_hw(some_student, 'Python', 10)
 some_reviewer.rate_hw(some_student, 'Python', 10)
 
-# Вызов метода rate_hw для второго экземпляра в классе Setudnt.  
-some_reviewer1.rate_hw(some_student1, 'Git', 10)
-some_reviewer1.rate_hw(some_student1, 'Git', 10)
-some_reviewer1.rate_hw(some_student1, 'Git', 10)
+# Вызов метода rate_hw для второго экземпляра в классе Student.  
+some_reviewer1.rate_hw(some_student1, 'Python', 10)
+some_reviewer1.rate_hw(some_student1, 'Python', 10)
+some_reviewer1.rate_hw(some_student1, 'Python', 10)
 
 # Печать результатов.  
 print(some_reviewer)
@@ -210,16 +210,17 @@ calculate_course_average(students_list, 'Python')
 
 # Функция - вычисление и вывод на печать средней оценки за лекции лекторов одного курса.  
 def calculate_lectors_course_average(lectors, course_name):
-  total_grades_lectors = []
-  for lector in lectors:
-    if hasattr(lector, 'grades') and course_name in lector.grades:
-      total_grades_lectors.extend(lector.grades[course_name])
-  if not total_grades_lectors:
-    average_grade = 0
-  else:
-    average_grade = sum(total_grades_lectors) / len(total_grades_lectors)
+    total_grades_lectors = []
+    for lector in lectors:
+        if course_name in student.grades:
+            total_grades_lectors.extend(student.grades[course_name])
 
-  print(f'Курс: {course_name}\nСредняя оценка за лекции: {average_grade:.1f}')
+    if not total_grades_lectors:
+        average_grade = 0
+    else:
+        average_grade = sum(total_grades_lectors) / len(total_grades_lectors)
+
+    print(f'Курс: {course_name}\nСредняя оценка за лекции: {average_grade:.1f}')
 
 # Вызов функции calculate_lectors_course_average.  
 lecturers_list = [some_lecturer, some_lecturer1]
